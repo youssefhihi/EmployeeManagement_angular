@@ -32,9 +32,11 @@
       </button>
     </div>
 </div>
-  <div *ngFor="let employee of employees" class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="  px-10  mt-10 flex flex-wrap gap-8 w-full">
+  <div *ngFor="let employee of employees" class="sm:w-full md:w-1/3 xl:w-1/4">
     <app-employee-card [employee]="employee" />
   </div>
+</div>
 
 
 

@@ -11,5 +11,4 @@ export class SelectOptionsComponent {
   @Input() name: string = '';
   @Input() label: string = '';
   @Input() options: { value: string | number; label: string }[] = [];
-  @Input() required: boolean = false;
 }
