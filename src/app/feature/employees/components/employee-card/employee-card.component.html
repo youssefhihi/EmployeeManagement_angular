@@ -1,1 +1,30 @@
-<p>employee-card works!</p>
+<div class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105">
+    <div class="relative">
+      <img
+        src="https://via.placeholder.com/300x200"
+        alt="Employee Cover"
+        class="w-full h-32 object-cover"
+      />
+      <div class="absolute -bottom-10 left-1/2 transform -translate-x-1/2">
+        <img
+          src="https://via.placeholder.com/80"
+          alt="Employee Avatar"
+          class="w-20 h-20 rounded-full border-4 border-white shadow-md"
+        />
+      </div>
+    </div>
+    <div class="pt-12 pb-6 px-4 text-center">
+      <h2 class="text-lg font-bold text-gray-800">{{ employee.name}}</h2>
+      <p class="text-sm text-gray-600">{{employee.jobTitle}}</p>
+      <p class="mt-2 text-xs text-gray-500">
+    <span class="font-medium">Department:</span> {{employee.department}}
+      </p>
+      <p class="text-xs text-gray-500">
+        <span class="font-medium">Hire Date:</span> {{employee.hireDate}}
+      </p>
+      <div class="mt-4 flex justify-center space-x-4">
+        <button class="px-4 py-2 text-white bg-blue-500 rounded-full text-sm shadow hover:bg-blue-600">View</button>
+        <button class="px-4 py-2 text-white bg-red-500 rounded-full text-sm shadow hover:bg-red-600">Delete</button>
+      </div>
+    </div>
+  </div>

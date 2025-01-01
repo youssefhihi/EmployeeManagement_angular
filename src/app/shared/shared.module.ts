@@ -1,17 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HighlightDirective } from './directive/highlight.directive';
 import { DateFormaterPipe } from './pipes/dateFormater/date-formater.pipe';
+import { InputComponent } from './components/input/input.component';
+import { HighlightDirective } from './directives/highlight/highlight.directive';
+import { SelectOptionsComponent } from './components/select-options/select-options.component';
 
 
 
 @NgModule({
   declarations: [
+    DateFormaterPipe,
+    InputComponent,
     HighlightDirective,
-    DateFormaterPipe
+    SelectOptionsComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    DateFormaterPipe,
+    InputComponent,
+    HighlightDirective,
+    SelectOptionsComponent
   ]
 })
 export class SharedModule { }
