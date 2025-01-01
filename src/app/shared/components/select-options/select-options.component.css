@@ -1,0 +1,6 @@
+select:focus {
+    outline: none;
+    ring-width: 2;
+    ring-color: #14b8a6; 
+  }
+  

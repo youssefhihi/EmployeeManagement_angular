@@ -1,1 +1,36 @@
-<p>employee-form works!</p>
+<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800 text-center">Employee Form</h1>
+    <form action="#" method="post" class="space-y-4">
+      <app-input name="username" label="Username" [required]="true" type="text"></app-input>
+      <app-input name="email" label="Email Address" [required]="true" type="email"></app-input>
+      <app-input name="password" label="Password" [required]="true" type="password"></app-input>
+      <app-input name="dob" label="Date of Birth" [required]="false" type="date"></app-input>
+      <app-select-options
+        name="department"
+        label="Department"
+        [required]="true"
+        [options]="[
+          { value: 'IT', label: 'IT Department' },
+          { value: 'HR', label: 'Human Resources' },
+          { value: 'Finance', label: 'Finance Department' }
+        ]"
+      ></app-select-options>
+      <app-select-options
+        name="status"
+        label="Status"
+        [required]="true"
+        [options]="[
+          { value: 'active', label: 'Active' },
+          { value: 'inactive', label: 'Inactive' },
+          { value: 'on_leave', label: 'On Leave' }
+        ]"
+      ></app-select-options>
+      <button
+        type="submit"
+        class="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600 transition"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+  
