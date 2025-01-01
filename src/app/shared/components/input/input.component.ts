@@ -10,8 +10,8 @@ import { Component, Input } from '@angular/core';
 export class InputComponent {
   @Input() name: string = '';
   @Input() label: string = '';
-  @Input() required: boolean = true;
   @Input() type: string = 'text'; 
   @Input() placeholder: string = ''; 
   @Input() value: string = ''; 
+  @Input() formControlName: string = '';
 }

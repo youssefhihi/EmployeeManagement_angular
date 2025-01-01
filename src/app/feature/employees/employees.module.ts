@@ -8,6 +8,8 @@ import { EmployeeCardComponent } from './components/employee-card/employee-card.
 import { EmployeeDetailsComponent } from './components/employee-details/employee-details.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { SharedModule } from '../../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     EmployeesRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class EmployeesModule { }

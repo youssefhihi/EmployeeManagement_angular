@@ -8,6 +8,8 @@ export class EmployeeService {
   constructor() {}
 
   createEmployee(employee:Employee): Observable<void> {
+    console.log(employee);
+    employee.id = Date.now().toString();
     return this.getEmployees().pipe(
       map((employees: Employee[]) => {
         employees.push(employee);
@@ -42,6 +44,19 @@ export class EmployeeService {
         employees.splice(index, 1)
         this.changeLocalStorage(employees);
         return "employee deleted successfully"
+      }),
+      catchError((error) => of(error.message))
+    );
+  }
+  
+  getEmployeeById(id: string): Observable<Employee> {
+    return this.getEmployees().pipe(
+      map((employees: Employee[]) => {
+        const employee = employees.find((e) => e.id === id);
+        if (!employee) {
+          throw new Error('Employee not found');
+        }
+        return employee;
       }),
       catchError((error) => of(error.message))
     );

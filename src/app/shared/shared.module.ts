@@ -12,7 +12,7 @@ import { SelectOptionsComponent } from './components/select-options/select-optio
     DateFormaterPipe,
     InputComponent,
     HighlightDirective,
-    SelectOptionsComponent
+    SelectOptionsComponent,
   ],
   imports: [
     CommonModule
@@ -22,6 +22,6 @@ import { SelectOptionsComponent } from './components/select-options/select-optio
     InputComponent,
     HighlightDirective,
     SelectOptionsComponent
-  ]
+    ]
 })
 export class SharedModule { }

@@ -1,36 +1,151 @@
-<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
-    <h1 class="text-2xl font-bold mb-6 text-gray-800 text-center">Employee Form</h1>
-    <form action="#" method="post" class="space-y-4">
-      <app-input name="username" label="Username" [required]="true" type="text"></app-input>
-      <app-input name="email" label="Email Address" [required]="true" type="email"></app-input>
-      <app-input name="password" label="Password" [required]="true" type="password"></app-input>
-      <app-input name="dob" label="Date of Birth" [required]="false" type="date"></app-input>
-      <app-select-options
-        name="department"
-        label="Department"
-        [required]="true"
-        [options]="[
-          { value: 'IT', label: 'IT Department' },
-          { value: 'HR', label: 'Human Resources' },
-          { value: 'Finance', label: 'Finance Department' }
-        ]"
-      ></app-select-options>
-      <app-select-options
-        name="status"
-        label="Status"
-        [required]="true"
-        [options]="[
-          { value: 'active', label: 'Active' },
-          { value: 'inactive', label: 'Inactive' },
-          { value: 'on_leave', label: 'On Leave' }
-        ]"
-      ></app-select-options>
-      <button
-        type="submit"
-        class="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600 transition"
+<div class="bg-white p-6 rounded-lg shadow-lg max-w-2xl mx-auto mt-10">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Employee Form</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <!-- Name -->
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [ngClass]="isFieldInvalid('name') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('name')">
+        {{ getErrorMessage('name') }}
+      </span>
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        [ngClass]="isFieldInvalid('email') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('email')">
+        {{ getErrorMessage('email') }}
+      </span>
+    </div>
+
+    <!-- Phone -->
+    <div>
+      <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone:</label>
+      <input
+        id="phone"
+        type="tel"
+        formControlName="phone"
+        [ngClass]="isFieldInvalid('phone') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('phone')">
+        {{ getErrorMessage('phone') }}
+      </span>
+    </div>
+
+    <!-- Job Title -->
+    <div>
+      <label for="jobTitle" class="block text-sm font-medium text-gray-700 mb-1">Job Title:</label>
+      <input
+        id="jobTitle"
+        type="text"
+        formControlName="jobTitle"
+        [ngClass]="isFieldInvalid('jobTitle') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('jobTitle')">
+        {{ getErrorMessage('jobTitle') }}
+      </span>
+    </div>
+
+    <!-- Salary -->
+    <div>
+      <label for="salary" class="block text-sm font-medium text-gray-700 mb-1">Salary:</label>
+      <input
+        id="salary"
+        type="number"
+        formControlName="salary"
+        [ngClass]="isFieldInvalid('salary') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('salary')">
+        {{ getErrorMessage('salary') }}
+      </span>
+    </div>
+
+    <!-- Date of Birth -->
+    <div>
+      <label for="dateOfBirth" class="block text-sm font-medium text-gray-700 mb-1">Date of Birth:</label>
+      <input
+        id="dateOfBirth"
+        type="date"
+        formControlName="dateOfBirth"
+        [ngClass]="isFieldInvalid('dateOfBirth') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('dateOfBirth')">
+        {{ getErrorMessage('dateOfBirth') }}
+      </span>
+    </div>
+
+    <!-- Hire Date -->
+    <div>
+      <label for="hireDate" class="block text-sm font-medium text-gray-700 mb-1">Hire Date:</label>
+      <input
+        id="hireDate"
+        type="date"
+        formControlName="hireDate"
+        [ngClass]="isFieldInvalid('hireDate') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      />
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('hireDate')">
+        {{ getErrorMessage('hireDate') }}
+      </span>
+    </div>
+
+    <!-- Department -->
+    <div>
+      <label for="department" class="block text-sm font-medium text-gray-700 mb-1">Department:</label>
+      <select
+        id="department"
+        formControlName="department"
+        [ngClass]="isFieldInvalid('department') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
       >
-        Submit
-      </button>
-    </form>
-  </div>
-  
+      <option *ngFor="let dept of departments" [value]="dept">{{ dept }}</option>
+
+      </select>
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('department')">
+        {{ getErrorMessage('department') }}
+      </span>
+    </div>
+
+    <!-- Status -->
+    <div>
+      <label for="status" class="block text-sm font-medium text-gray-700 mb-1">Status:</label>
+      <select
+        id="status"
+        formControlName="status"
+        [ngClass]="isFieldInvalid('status') ? 'border-red-500' : 'border-gray-300'"
+        class="w-full border border-gray-300 p-2 rounded focus:ring-teal-500 focus:border-teal-500"
+      >
+      <option *ngFor="let status of employeeStatuses" [value]="status">{{ status }}</option>
+
+      </select>
+      <span class="text-red-500 text-sm" *ngIf="getErrorMessage('status')">
+        {{ getErrorMessage('status') }}
+      </span>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="w-full bg-teal-500 text-white py-2 px-4 rounded hover:bg-teal-600 transition"
+    >
+      Submit
+    </button>
+  </form>
+</div>
