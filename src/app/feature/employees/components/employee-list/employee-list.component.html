@@ -1,3 +1,8 @@
+<app-alert-msg 
+  *ngIf="showAlert" 
+  [message]="msg" 
+  [type]="alertType">
+</app-alert-msg>
 
 <div class="w-full flex justify-between rounded-xl px-10 bg-black py-3 mt-10 ">
   <div>
@@ -8,9 +13,7 @@
     name="text"
     type="text"
   />
-  <!-- <span class="rounded-full bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-red-600 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50  px-2 py-2 rotate-[45deg] ml-2 shadow-md focus:shadow-lg focus:shadow-rose-400 dark:shadow-md dark:shadow-purple-500">
-    <i class="fas fa-search"></i>
-  </span> -->
+ 
 </div>
   <div>
     <button routerLink="/employees/add" class="px-4 py-2 text-black border-2 border-white  bg-white flex space-x-2 rounded-full text-sm shadow hover:bg-gray-900 hover:text-white ease-in-out duration-300 active:scale-75" >
