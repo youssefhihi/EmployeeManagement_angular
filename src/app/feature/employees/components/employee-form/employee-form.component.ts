@@ -4,6 +4,8 @@ import { EmployeeService } from '../../service/employee/employee.service';
 import { Department, EmployeeStatus } from '../../../types/enums';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { Employee } from '../../../types/employee/employee';
+import { ToastMsgService } from '../../../../core/service/toastMsg/toast-msg.service';
 
 
 @Component({
@@ -24,7 +26,8 @@ export class EmployeeFormComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private toastMsg: ToastMsgService
   ) {}
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -43,23 +46,50 @@ export class EmployeeFormComponent {
         department: ['', Validators.required],
         status: ['', Validators.required],
     });
-    // if (this.isUpdate) {
-    //   this.employeeService.(this.employeeId).subscribe(employee => {
-    //     this.employeeForm.patchValue(employee);
-    //   });
-    // }
+    if (this.isUpdate && this.employeeId) {
+      this.employeeService.getEmployeeById(this.employeeId).subscribe( {
+        next: (employee: Employee) => {
+          this.employeeForm.patchValue(employee);
+        },
+        error: (error) => {
+          console.log("sdfrf",error);
+        }
+      });
+    }
   }
 
   onSubmit() {
     this.isSubmitted = true;
     if (this.employeeForm.invalid) {
-      console.log('Form is invalid');
       return;
     }
-    this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
-      this.employeeForm.reset();
-      this.isSubmitted = false;
-    });
+    if (this.isUpdate && this.employeeId) {
+      let employee : Employee = this.employeeForm.value;
+        employee.id = this.employeeId;
+        let msg:{message: string, type: string} = {message: '', type: ''};
+        
+        this.employeeService.updateEmployee(employee).subscribe({
+          next: (message) => {
+            msg = {message: message, type: 'success'};
+            this.employeeForm.reset();
+            this.isSubmitted = false;
+          },
+          error: (error) => {
+            msg = {message: error, type: 'error'};
+
+          },
+          complete: () => {
+            this.toastMsg.setMsg(msg.message, msg.type);
+            this.router.navigate(['/employees']);
+          },
+        });
+         
+    }else{
+      this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
+        this.employeeForm.reset();
+        this.isSubmitted = false;
+      });
+    }
   }
   
  

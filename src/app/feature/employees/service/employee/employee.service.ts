@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Employee } from '../../../types/employee/employee';
-import { catchError, map, Observable, of } from 'rxjs';
+import {  map, Observable, of } from 'rxjs';
+import { isPlatformBrowser } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   createEmployee(employee:Employee): Observable<void> {
     console.log(employee);
@@ -19,6 +20,7 @@ export class EmployeeService {
   }
 
   updateEmployee(employee: Employee): Observable<string> {
+    console.log(employee);
     return this.getEmployees().pipe(
       map((employees: Employee[]) => {
         const index = employees.findIndex((e) => e.id === employee.id);
@@ -29,7 +31,6 @@ export class EmployeeService {
         this.changeLocalStorage(employees);
         return 'Employee updated successfully';
       }),
-      catchError((error) => of(error.message))
     );
   }
   
@@ -45,7 +46,6 @@ export class EmployeeService {
         this.changeLocalStorage(employees);
         return "employee deleted successfully"
       }),
-      catchError((error) => of(error.message))
     );
   }
   
@@ -58,16 +58,20 @@ export class EmployeeService {
         }
         return employee;
       }),
-      catchError((error) => of(error.message))
     );
   }
 
   getEmployees():Observable<Employee[]>{
-    const employees = localStorage.getItem("employees");
+    let employees;
+    if (isPlatformBrowser(this.platformId)) {
+       employees = localStorage.getItem("employees");
+    }
     return of(employees? JSON.parse(employees) : []);
   }
 
   private changeLocalStorage(employees: Employee[]) {
+    if (isPlatformBrowser(this.platformId)) {
     localStorage.setItem("employees", JSON.stringify(employees));
+  }
   }
 }

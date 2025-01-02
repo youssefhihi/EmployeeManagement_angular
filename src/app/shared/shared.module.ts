@@ -4,6 +4,7 @@ import { DateFormaterPipe } from './pipes/dateFormater/date-formater.pipe';
 import { InputComponent } from './components/input/input.component';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { SelectOptionsComponent } from './components/select-options/select-options.component';
+import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
 
 
 
@@ -13,6 +14,7 @@ import { SelectOptionsComponent } from './components/select-options/select-optio
     InputComponent,
     HighlightDirective,
     SelectOptionsComponent,
+    AlertMsgComponent,
   ],
   imports: [
     CommonModule
@@ -21,7 +23,8 @@ import { SelectOptionsComponent } from './components/select-options/select-optio
     DateFormaterPipe,
     InputComponent,
     HighlightDirective,
-    SelectOptionsComponent
+    SelectOptionsComponent,
+    AlertMsgComponent
     ]
 })
 export class SharedModule { }

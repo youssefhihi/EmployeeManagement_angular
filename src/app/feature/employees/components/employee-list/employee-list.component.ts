@@ -1,7 +1,7 @@
 import { EmployeeService } from './../../service/employee/employee.service';
 import { Component } from '@angular/core';
 import { Employee } from '../../../types/employee/employee';
-import { Department, EmployeeStatus } from '../../../types/enums';
+import { ToastMsgService } from '../../../../core/service/toastMsg/toast-msg.service';
 
 @Component({
   selector: 'app-employee-list',
@@ -12,12 +12,31 @@ import { Department, EmployeeStatus } from '../../../types/enums';
 })
 export class EmployeeListComponent {
   employees: Employee[] = [];
+  msg: string = '';
+  alertType: string = '';
+  showAlert: boolean = false;
 
-  constructor(private service: EmployeeService) {}
+  constructor(private service: EmployeeService, private toastMsg: ToastMsgService) {}
 
   ngOnInit() {
+    let msg = this.toastMsg.getMsg();
+    if (msg != null && msg.message != null && msg.type != null) {
+      console.log(msg);
+      this.triggerAlert(msg.message, msg.type);
+    }
     this.service.getEmployees().subscribe((employees) => {
       this.employees = employees;
     });
+  }
+
+
+  triggerAlert(message: string, type: string) {
+    this.msg = message;
+    this.alertType = type;
+    this.showAlert = true;
+
+    setTimeout(() => {
+      this.showAlert = false;
+    }, 3000); 
   }
 }
