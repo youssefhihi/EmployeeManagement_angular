@@ -62,7 +62,7 @@
           </div>
           <div>
             <p class="text-gray-600">
-              <span class="font-semibold">Date de Naissance:</span> {{ employee.dateOfBirth | dateFormater:'dd/MM/yyyy' }}
+              <span class="font-semibold">Date de Naissance:</span> {{ employee.dateOfBirth | dateFormater }}
             </p>
           </div>
           <div>
@@ -88,7 +88,7 @@
             </div>
             <div>
               <p class="text-gray-600">
-                <span class="font-semibold">Date d'Embauche:</span> {{ employee.hireDate }}
+                <span class="font-semibold">Date d'Embauche:</span> {{ employee.hireDate | dateFormater }}
               </p>
             </div>
             <div>
