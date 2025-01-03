@@ -45,6 +45,7 @@ export class EmployeeFormComponent {
         hireDate: ['', Validators.required],
         department: ['', Validators.required],
         status: ['', Validators.required],
+        skills: ['', Validators.required]
     });
     if (this.isUpdate && this.employeeId) {
       this.employeeService.getEmployeeById(this.employeeId).subscribe( {

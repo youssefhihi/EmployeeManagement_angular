@@ -11,5 +11,5 @@ export interface Employee {
     hireDate: Date;
     jobTitle : string;
     status: EmployeeStatus;
-    skills: string[]; 
+    skills: string; 
 }

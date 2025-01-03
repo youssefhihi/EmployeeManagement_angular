@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DateFormaterPipe } from './pipes/dateFormater/date-formater.pipe';
 import { InputComponent } from './components/input/input.component';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
@@ -25,6 +25,6 @@ import { AlertMsgComponent } from './components/alert-msg/alert-msg.component';
     HighlightDirective,
     SelectOptionsComponent,
     AlertMsgComponent
-    ]
+    ],
 })
 export class SharedModule { }

@@ -29,7 +29,6 @@ export class EmployeeListComponent {
     });
   }
 
-
   triggerAlert(message: string, type: string) {
     this.msg = message;
     this.alertType = type;

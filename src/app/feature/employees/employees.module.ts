@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 
 
 
+
 @NgModule({
   declarations: [
     EmployeesComponent,
@@ -24,7 +25,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     EmployeesRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class EmployeesModule { }
