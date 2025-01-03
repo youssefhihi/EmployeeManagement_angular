@@ -4,17 +4,8 @@
   [type]="alertType">
 </app-alert-msg>
 
-<div class="w-full flex justify-between rounded-xl px-10 bg-black py-3 mt-10 ">
-  <div>
-  <input
-    class="bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 focus:ring-red-600 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-full px-4 py-2 shadow-md focus:shadow-lg focus:shadow-red-600 dark:shadow-md dark:shadow-rose-500"
-    autocomplete="off"
-    placeholder="Search here..."
-    name="text"
-    type="text"
-  />
- 
-</div>
+<div class="w-full flex justify-end rounded-xl px-10 bg-black py-3 mt-10 ">
+  
   <div>
     <button routerLink="/employees/add" class="px-4 py-2 text-black border-2 border-white  bg-white flex space-x-2 rounded-full text-sm shadow hover:bg-gray-900 hover:text-white ease-in-out duration-300 active:scale-75" >
       <svg
@@ -35,7 +26,7 @@
       </button>
     </div>
 </div>
-<div class="  px-10  mt-10 flex flex-wrap gap-8 w-full">
+<div class="  px-10  mt-10 flex flex-wrap justify-center gap-8 w-full">
   <div *ngFor="let employee of employees" class="sm:w-full md:w-1/3 xl:w-1/4">
     <app-employee-card [employee]="employee" />
   </div>
