@@ -20,9 +20,7 @@
                             data-original="#000000" />
                     </svg>
                     <h4 class="text-gray-800 text-lg font-semibold mt-4">Are you sure you want to delete it?</h4>
-                    <p class="text-sm text-gray-600 mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor auctor
-                        arcu,
-                        at fermentum dui. Maecenas</p>
+                    <p class="text-gray-600 mt-2">This action cannot be undone.</p>
                 </div>
 
                 <div class="flex flex-col space-y-2">
@@ -48,7 +46,7 @@
       <!-- Body Section -->
       <div class="p-6">
         <!-- General Info -->
-        <h2 class="text-xl font-semibold text-gray-800 mb-4">Informations Générales</h2>
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">General Informations </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p class="text-gray-600">
@@ -57,43 +55,43 @@
           </div>
           <div>
             <p class="text-gray-600">
-              <span class="font-semibold">Téléphone:</span> {{ employee.phone }}
+              <span class="font-semibold">Phone Number :</span> {{ employee.phone }}
             </p>
           </div>
           <div>
             <p class="text-gray-600">
-              <span class="font-semibold">Date de Naissance:</span> {{ employee.dateOfBirth | dateFormater }}
+              <span class="font-semibold">Date Of Birth:</span> {{ employee.dateOfBirth | dateFormater }}
             </p>
           </div>
           <div>
             <p class="text-gray-600">
-              <span class="font-semibold">Salaire:</span> {{ employee.salary }}
+              <span class="font-semibold">Salary:</span> {{ employee.salary }}
             </p>
           </div>
         </div>
   
         <!-- Employment Details -->
         <div class="mt-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Détails de l'Emploi</h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">employee details</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <p class="text-gray-600">
-                <span class="font-semibold">Département:</span> {{ employee.department }}
+                <span class="font-semibold">Department:</span> {{ employee.department }}
               </p>
             </div>
             <div>
               <p class="text-gray-600">
-                <span class="font-semibold">Poste:</span> {{ employee.jobTitle }}
+                <span class="font-semibold">Post:</span> {{ employee.jobTitle }}
               </p>
             </div>
             <div>
               <p class="text-gray-600">
-                <span class="font-semibold">Date d'Embauche:</span> {{ employee.hireDate | dateFormater }}
+                <span class="font-semibold">Hire Date:</span> {{ employee.hireDate | dateFormater }}
               </p>
             </div>
             <div>
               <p class="text-gray-600">
-                <span class="font-semibold">Statut:</span> {{ employee.status }}
+                <span class="font-semibold">Status:</span> {{ employee.status }}
               </p>
             </div>
           </div>
@@ -101,7 +99,7 @@
   
         <!-- Skills -->
         <div class="mt-6">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Compétences</h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Skills</h2>
           <div class="flex flex-wrap gap-2">
             <span
               class="inline-block bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-lg">

@@ -8,13 +8,14 @@ import { isPlatformBrowser } from '@angular/common';
 export class EmployeeService {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  createEmployee(employee:Employee): Observable<void> {
+  createEmployee(employee:Employee): Observable<string> {
     console.log(employee);
     employee.id = Date.now().toString();
     return this.getEmployees().pipe(
       map((employees: Employee[]) => {
         employees.push(employee);
         this.changeLocalStorage(employees);
+        return 'Employee created successfully';
       })
     )
   }

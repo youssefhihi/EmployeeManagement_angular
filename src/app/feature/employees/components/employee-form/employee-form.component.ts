@@ -86,9 +86,21 @@ export class EmployeeFormComponent {
         });
          
     }else{
-      this.employeeService.createEmployee(this.employeeForm.value).subscribe(() => {
-        this.employeeForm.reset();
-        this.isSubmitted = false;
+      let msg:{message: string, type: string} = {message: '', type: ''};
+      this.employeeService.createEmployee(this.employeeForm.value).subscribe( {
+        next: (message) => {
+          msg = {message: message, type: 'success'};
+          this.employeeForm.reset();
+          this.isSubmitted = false;
+        },
+        error: (error) => {
+          msg = {message: error, type: 'error'};
+
+        },
+        complete: () => {
+          this.toastMsg.setMsg(msg.message, msg.type);
+          this.router.navigate(['/employees']);
+        },
       });
     }
   }
